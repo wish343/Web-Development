@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>The Dating Site</title>  
+  </head>                                                              
+  
+  <body>
+  <h1>Please Enter Your Details For Our Dating Website</h1>
+  <form enctype="multipart/form-data" method = "post" action = "https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+    <fieldset >
+      <legend > Your Face</legend>
+      <label for="imag1"> Your image: </label>
+      <input id = "imag1" type="file" required> <br>
+      <label for="preview"> Image preview: </label>
+      <img id="preview">
+    </fieldset>         
+    
+    <fieldset> 
+      <legend>Your General Details</legend>
+      <label for = "name"> Name: </label>
+      <input id = "name" name = "name" type="text" placeholder = "Your Full Name" required><br>
+      <label>Gender:</label>
+      <input id = "male" type="radio" name = "Gender" value = "Male" required><label class = "selection" for = "male">Male</label>
+      <input id = "female" type="radio" name = "Gender" value = "Female" required><label class = "selection" for="female"> Female</label><br>
+      <label for="age">Age:</label>
+      <input type="number" id = "age" name = "age" min="0" max ="200" required value = "18"><br>
+      <label for="dob">Date of Birth: </label>
+      <input type="date" id = "dob" name = "dob"><br>      
+      <label for="favColor">Favorite Color:</label>
+      <input type="color" id = "favColor" name = "favColor"><br>           
+      <label for="country">Which Country: </label>
+      <select id="country" name = "country">
+        <option value = "None of these">None of these</option>
+        <option value = "USA" selected>USA</option>
+        <option value = "Spain">Spain</option>
+        <option value = "Canada">Canada</option>
+        <option value = "Brazil">Brazil</option>
+        <option value = "France">France</option>
+      </select><br>
+         
+    </fieldset>    
+    
+    <fieldset >
+      <legend>Your indicators</legend>
+      <label for = "height">Height:</label>
+      <span class = "danger">Short</span><input id = "height" name = "height" type = "range" min = "0" max = "100" value="80"><span class = "safe">Tall</span><br>
+      <label for = "salary">Salary: </label>
+      <span class= "danger">Poor</span><input id = "salary" name = "salary" type = "range" min = "0" max = "100" value="70"><span class = "safe">Rich</span>
+    </fieldset>                             
+    
+    <fieldset> 
+      <legend>Your Contact information</legend>
+      <label for = "email">Email:</label>
+      <input type = "email" id = "email" name = "email" placeholder = "abc@xyz.com" required><br>
+      <label for = "tele">Mobile:</label>
+      <input type = "tel" id = "tele" placeholder = "+1-xxx-xxx-xxxx"  name = "Mobile"><br>          
+      <label for = "address">Address: </label>
+      <textarea id = "address" name = "address" row = "2" columns = "80" placeholder = "Your Full Adrress goes here"></textarea><br>
+      <label>Method to contact you:</label>
+      <input id = "label" type="checkbox" name = "contMethod" value = "Email"><label class="selection" for="email"> Email</label>
+      <input type="checkbox" name = "contMethod" value = "WhatsApp"> <label class="selection" for="email"> WhatsApp</label>
+      <input type="checkbox" name = "contMethod" value = "In-app chat"><label class="selection" for="email"> In-app chat</label>
+    </fieldset>
+    <input type="submit" name = "Submit It">
+  </form> 
+  </body>  
+</html>
