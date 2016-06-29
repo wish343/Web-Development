@@ -1,0 +1,68 @@
+<html>
+  <head>             
+    <title >The Game</title>
+    <script>
+      var maxW = "60px";
+      var numb = 5; 
+      var level = 1;
+	  
+	  //Generating faces on left side
+      function showFace(){
+        leftSide = document.getElementById("leftSide");
+        var img1; 
+        var i = 0;
+        while(i<numb){
+         img1 = document.createElement("img");
+         img1.src = "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+         img1.style.width = maxW;
+         img1.style.left = Math.floor(Math.random()*400) + "px";
+         img1.style.position = "absolute";
+         img1.style.top = Math.floor(Math.random()*400) + "px";
+         leftSide.appendChild(img1);
+         i++;
+        }
+		
+        //Body function
+        theBody = document.getElementsByTagName("body")[0];
+        theBody.onclick = function lose(event){
+          alert("Game over!");
+          theBody.onclick = null;
+          leftSide.lastChild.onclick = null;
+        };
+		
+        //Correct click function
+        leftSide.lastChild.onclick = function win(event){
+            event.stopPropagation();
+            numb += 5;
+            level++;   
+            while(leftSide.firstChild){
+              leftSide.removeChild(leftSide.firstChild);
+            } 
+            rightSide.removeChild(rightSide.childNodes[1]);
+            showFace();            
+        };     
+        copyFace();
+        
+      }
+	  
+	  //Copying faces on right side
+      function copyFace(){
+        rightSide = document.getElementById("rightSide");
+        rightSide.appendChild(leftSide.cloneNode(true));
+        div1 = rightSide.childNodes[1];
+        div1.removeChild(div1.lastChild);
+      }    
+    </script>   
+    
+    <style>
+      div {width:500px;height:500px;position:absolute;}
+      #rightSide {left:500px; border-left:1px solid black;} 
+    </style>
+  </head>
+  <body onload = "showFace()">  
+    <h1>Matching Game</h1>  
+    <p>Please click on the extra image on left-side</p>
+    <div id = "leftSide" >      </div>   
+    <div id = "rightSide" >     </div>
+  </body>
+</html>

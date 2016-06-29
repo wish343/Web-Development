@@ -1,0 +1,6 @@
+theBody = document.getElementsByTagName("body")[0];
+        theBody.onclick = function lose(event){
+          alert("Game over!");
+          theBody.onclick = null;
+          leftSide.lastChild.onclick = null;
+        };
