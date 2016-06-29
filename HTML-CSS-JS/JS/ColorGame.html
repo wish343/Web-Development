@@ -1,0 +1,63 @@
+<html>
+  <head> 
+    <title>Color Guessing Game</title>
+    <script>
+      var color = ["Khaki","Lime","Orange","Orchid","Plum","Tan","Yellow","Azure","Cornsilk","Gainsboro"];
+      var count = 0;
+      var difference = color.length;
+      var big = "Your answer is incorrect!\nTip:Your color is alphabetically greater than mine";
+      var small = "Your answer is incorrect!\nTip:Your color is alphabetically smaller than mine"; 
+      var far = "You have moved far away from the target";
+      var close = "You have moved closer to the target";
+      function do_game(){
+        color.sort();
+        myColor = color[parseInt(Math.random() * (color.length-1))];
+        alert("Yohoo! You have reached the color game!");
+        play = true;
+        var tempDiff;
+        do{
+          userColor = prompt("I am thinking of a color. Can you guess which one it is:\n\n"+color);
+          count++;
+          if(color.indexOf(userColor) != -1){
+            tempDiff = color.indexOf(myColor) - color.indexOf(userColor);
+            if(tempDiff < 0)
+              tempDiff *= -1;
+  
+            if(userColor > myColor){
+              if(tempDiff > difference){
+                alert(big+"\n\n"+far);
+              }else if(tempDiff < difference){
+                alert(big + "\n\n" + close);
+              }else{
+                alert(big);
+              }
+              
+            }else if(userColor < myColor){
+              if(tempDiff > difference){
+                alert(small+"\n\n"+far);
+              }else if(tempDiff < difference){
+                alert(small + "\n\n" + close);
+              }else{
+                alert(small);
+              }
+            }else{
+              play = false;
+              theBody = document.getElementsByTagName("body")[0];
+              theBody.style.background = myColor;
+              textBody = document.getElementById("para");
+              textBody.innerHTML = "You found my color!<br>Yes it is " +myColor + "!<br><br>It took you "+count+" tries to find it.";
+            }
+            difference = tempDiff; 
+          }else{
+            alert("That's strange! I don't recognize this color!");
+          }  
+        }while(play)
+        
+                
+      }
+    </script>
+  </head>
+  <body onload = "do_game()">
+    <p id = "para"></p>
+  </body>
+</html>

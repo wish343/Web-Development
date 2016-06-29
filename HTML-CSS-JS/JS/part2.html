@@ -1,0 +1,38 @@
+<html>
+  <head> 
+    <title>Color Guessing Game</title>
+    <script>
+      var color = ["Khaki","Lime","Orange","Orchid","Plum","Tan","Yellow","Azure","Cornsilk","Gainsboro"];
+      var count = 0;
+      
+      function do_game(){
+        color.sort();
+        myColor = color[parseInt(Math.random() * (color.length-1))];
+        alert("The answer is "+myColor);
+        play = true;
+        do{
+          userColor = prompt("I am thinking of a color. Can you guess which one it is:\n\n"+color);
+          count++;
+          if(color.indexOf(userColor) != -1){
+            if(userColor > myColor){
+              alert("Your answer is incorrect!\nTip:Your color is alphabetically greater than mine");
+            }else if(userColor < myColor){
+              alert("Your answer is incorrect!\nTip:Your color is alphabetically smaller than mine");
+            }else{
+              play = false;
+              theBody = document.getElementsByTagName("body")[0];
+              theBody.style.background = myColor;
+              alert("You found my color!\nYes it is " +myColor + "!\n\nIt took you "+count+" tries to find it.");
+            } 
+          }else{
+            alert("That's strange! I don't recognize this color!");
+          }  
+        }while(play)
+        
+                
+      }
+    </script>
+  </head>
+  <body onload = "do_game()">
+  </body>
+</html>
